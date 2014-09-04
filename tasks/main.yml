@@ -1,0 +1,17 @@
+---
+# tasks file for backup-source
+- name: Install rsync
+  apt:
+    pkg: rsync
+    state: latest
+
+- name: Create system user for replication rsync
+  user:
+    name: replicator
+    system: yes
+  when: source_user is not defined
+
+- name: Allow SSH key from replication slave
+  authorized_key:
+    user: "{{ 'replicator' if source_user is not defined else source_user }}"
+    key: "{{ lookup('file', backup_client_pubkey) }}"
