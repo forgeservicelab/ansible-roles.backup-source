@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: Jorge Rodriguez
+  description: Grants SSH access to a backup client and ensures RSYNC is present
+  company: Digile
+  license: GPLv3
+  min_ansible_version: 1.8
+  platforms:
+  - name: Debian
+    versions:
+    - all
+dependencies: []
